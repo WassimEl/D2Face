@@ -14,4 +14,3 @@ cursor.execute(
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, username TEXT, email TEXT, password TEXT)"
 )  # add fk
-print("HELLO WORLD NIIGER")
