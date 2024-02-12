@@ -1,6 +1,6 @@
 import sqlite3
 
-connexion = sqlite3.connect("BaseDonnée.db")
+connexion = sqlite3.connect("database.db")
 cursor = connexion.cursor()
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS character (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, )"
