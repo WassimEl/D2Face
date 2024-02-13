@@ -1,4 +1,5 @@
-import function_database 
+import function_database
+
 
 def init_menu():
     q_choix_1 = "[1] Créer un compte"
@@ -53,4 +54,4 @@ def fn_app():
 
 if __name__ == "__main__":
     init_db()
-    #fn_app()
+    fn_app()

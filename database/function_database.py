@@ -53,17 +53,11 @@ def init_db(db_name, sql_init):
 
 
 def input_user_info():
-    q_user = "Entrez votre nom d'utilisateur : "
-    q_mail = "Entrez votre adresse mail : "
-    q_pw = "Entrez votre mot de passe : "
+    q_user = input("Entrez votre nom d'utilisateur : ")
+    q_mail = input("Entrez votre adresse mail : ")
+    q_pw = input("Entrez votre mot de passe : ")
     list_info = [q_user, q_mail, q_pw]
     return list_info
-
-
-def setup_info_user(list_info):
-    username = list_info[1]
-    email = list_info[2]
-    password = list_info[3]
 
 
 def set_user(db_name, username, email, password):
@@ -74,10 +68,10 @@ def set_user(db_name, username, email, password):
             cursor = sqliteConnection.cursor()
             try:
                 print(
-                    f"Commande SQL exécutée : INSERT INTO TRAIN (username, email, password) VALUES ('{username, password, email}');"
+                    f"Commande SQL exécutée : INSERT INTO user (username, email, password) VALUES ('{username, password, email}');"
                 )
                 cursor.execute(
-                    f"INSERT INTO TRAIN (username, email, password) VALUES ('{username, password, email}');"
+                    f"INSERT INTO user (username, email, password) VALUES ('{username, password, email}');"
                 )
                 print("SQLite command executed successfully")
             except sqlite3.Error as error:
@@ -94,13 +88,12 @@ def set_user(db_name, username, email, password):
             print("The SQLite connection is closed")
 
 
-def fn_create_user(u_name):
-    username = setup_info_user(u_name)
+def fn_create_user(list_info,):
+    username = list_info[1]
+    email = list_info[2]
+    password = list_info[3]
     db_name = get_db_n()
-    set_user(
-        db_name,
-        username,
-    )
+    set_user(db_name, username, email, password)
 
 
 def fn_delete_user():
