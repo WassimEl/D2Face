@@ -47,7 +47,8 @@ CREATE TABLE
     user (
         userID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         username TEXT,
-        pass_word TEXT,
+        email TEXT,
+        password TEXT,
         type_of_user TEXT,
         characterID INT,
         FOREIGN KEY (characterID) REFERENCES characters (characterID)
