@@ -4,7 +4,7 @@ import os
 connexion = sqlite3.connect("database.db")
 
 
-#
+# find and stock database name
 def get_db_n():
     file_path = os.path.realpath(__file__)
     work_dir = os.path.dirname(file_path)
@@ -12,16 +12,16 @@ def get_db_n():
     return db_name
 
 
-#
+# find sql scripts in folders
 def get_sql_s():
     file_path = os.path.realpath(__file__)
     work_dir = os.path.dirname(file_path)
-    sql_init = f"{work_dir}/sql-scripts/init-horaire-train.sql"
+    sql_init = f"{work_dir}/sql-scripts/init_database.sql"
     return sql_init
 
 
-#
-def fn_init_db(db_name, sql_init):
+# initialize database
+def init_db(db_name, sql_init):
     sqliteConnection = None
     try:
         with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
