@@ -58,7 +58,7 @@ CREATE TABLE
         campaignID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         campaign_name TEXT,
         c_creation_time DATETIME,
-        userID INT journey_id INT,
+        userID INT,
         station_id INT,
         FOREIGN KEY (userID) REFERENCES user (userID),
         FOREIGN KEY (station_id) REFERENCES station (station_id)

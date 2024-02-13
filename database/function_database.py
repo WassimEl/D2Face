@@ -1,14 +1,12 @@
 import sqlite3
 import os
 
-connexion = sqlite3.connect("database.db")
-
 
 # find and stock database name
 def get_db_n():
     file_path = os.path.realpath(__file__)
     work_dir = os.path.dirname(file_path)
-    db_name = f"{work_dir}/data.db"
+    db_name = f"{work_dir}/database.db"
     return db_name
 
 
@@ -24,7 +22,7 @@ def get_sql_s():
 def init_db(db_name, sql_init):
     sqliteConnection = None
     try:
-        with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
+        with sqlite3.connect(db_name) as sqliteConnection:
             print(f"Connected to the {db_name}")
             cursor = sqliteConnection.cursor()
             try:
@@ -52,8 +50,3 @@ def init_db(db_name, sql_init):
         if sqliteConnection:
             sqliteConnection.close()
             print("The SQLite connection is closed")
-
-
-connexion.commit()
-
-connexion.close()
