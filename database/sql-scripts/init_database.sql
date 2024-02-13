@@ -69,6 +69,7 @@ CREATE TABLE
         inscriptionID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         i_creation_time DATETIME,
         userID INT,
-        campaignID FOREIGN KEY (userID) REFERENCES user (userID),
+        campaignID INT,
+        FOREIGN KEY (userID) REFERENCES user (userID),
         FOREIGN KEY (campaignID) REFERENCES campaign (campaignID)
     );
