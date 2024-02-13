@@ -52,14 +52,6 @@ def init_db(db_name, sql_init):
             print("The SQLite connection is closed")
 
 
-def input_user_info():
-    q_user = input("Entrez votre nom d'utilisateur : ")
-    q_mail = input("Entrez votre adresse mail : ")
-    q_pw = input("Entrez votre mot de passe : ")
-    list_info = [q_user, q_mail, q_pw]
-    return list_info
-
-
 def set_user(db_name, username, email, password):
     sqliteConnection = None
     try:
@@ -67,12 +59,8 @@ def set_user(db_name, username, email, password):
             print(f"Connected to the database {db_name}")
             cursor = sqliteConnection.cursor()
             try:
-                print(
-                    f"Commande SQL exécutée : INSERT INTO user (username, email, password) VALUES ('{username, password, email}');"
-                )
-                cursor.execute(
-                    f"INSERT INTO user (username, email, password) VALUES ('{username, password, email}');"
-                )
+                print(f"Commande SQL exécutée : INSERT INTO USER (username, email, password) VALUES ('{username, email, password}');")
+                cursor.execute(f"INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",(username, email, password),)
                 print("SQLite command executed successfully")
             except sqlite3.Error as error:
                 print(f"Error while executing SQLite script: {error}")
@@ -88,10 +76,15 @@ def set_user(db_name, username, email, password):
             print("The SQLite connection is closed")
 
 
-def fn_create_user(list_info,):
-    username = list_info[1]
-    email = list_info[2]
-    password = list_info[3]
+# pas beau !!
+def fn_create_user():
+    q_user = input("Entrez votre nom d'utilisateur : ")
+    q_mail = input("Entrez votre adresse mail : ")
+    q_pw = input("Entrez votre mot de passe : ")
+    l_user_info = [q_user, q_mail, q_pw]
+    username = l_user_info[0]
+    email = l_user_info[1]
+    password = l_user_info[2]
     db_name = get_db_n()
     set_user(db_name, username, email, password)
 
@@ -100,5 +93,29 @@ def fn_delete_user():
     print("")
 
 
-def fn_read_user():
-    print("")
+def fn_read_user(db_name):
+    sqliteConnection = None
+    try:
+        with sqlite3.connect(db_name) as sqliteConnection:
+            print(f"Connected to the database {db_name}")
+            cursor = sqliteConnection.cursor()
+            try:
+                cursor.execute(f"SELECT * FROM USER;")
+                data = cursor.fetchall()
+                print("SQLite script executed successfully")
+                print(f"\nExecution du SELECT :")
+                for line in data:
+                    print(line)
+                print()
+            except sqlite3.Error as error:
+                print(f"Error while executing SQLite script: {error}")
+            finally:
+                cursor.close()
+    except sqlite3.Error as error:
+        print(f"Error while connecting to SQLite: {error}")
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        if sqliteConnection:
+            sqliteConnection.close()
+            print("The SQLite connection is closed")

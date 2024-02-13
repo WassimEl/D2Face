@@ -1,5 +1,5 @@
 CREATE TABLE
-    characters (
+    CHARACTERS (
         characterID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         character_name TEXT,
         character_classe TEXT,
@@ -44,7 +44,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    user (
+    USER (
         userID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         username TEXT,
         email TEXT,
@@ -55,7 +55,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    campaign (
+    CAMPAIGN (
         campaignID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         campaign_name TEXT,
         c_creation_time DATETIME,
@@ -66,7 +66,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    inscription (
+    INSCRIPTION (
         inscriptionID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         i_creation_time DATETIME,
         userID INT,
