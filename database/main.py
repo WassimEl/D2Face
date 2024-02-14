@@ -2,9 +2,9 @@ import function_database
 
 
 def init_menu_main():
-    print("Menu Principal")
-    q_choix_1 = "[1] User"
-    q_choix_2 = "[2] Character"
+    print("\n----Menu Principal----")
+    q_choix_1 = "[1] Utilisateur"
+    q_choix_2 = "[2] Fiche de personnage"
     q_choix_3 = "[3] Campagne"
     q_choix_4 = "[4] Quitter"
     list_menu = [q_choix_1, q_choix_2, q_choix_3, q_choix_4]
@@ -14,7 +14,7 @@ def init_menu_main():
 def menu_main(list_menu):
     for item in list_menu:
         print(f"{item}")
-    q_status = "Entrer votre choix (1-4) : "
+    q_status = "Entrer le choix (1-4) : "
     answer = int(input(q_status))
 
     match answer:
