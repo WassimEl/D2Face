@@ -78,21 +78,13 @@ def set_user(db_name, username, email, password):
 
 # pas beau !!
 def fn_create_user():
-    q_user = input("Entrez votre nom d'utilisateur : ")
-    q_mail = input("Entrez votre adresse mail : ")
-    q_pw = input("Entrez votre mot de passe : ")
-    l_user_info = [q_user, q_mail, q_pw]
-    username = l_user_info[0]
-    email = l_user_info[1]
-    password = l_user_info[2]
+    username = input("Entrez votre nom d'utilisateur : ")
+    email = input("Entrez votre adresse mail : ")
+    password = input("Entrez votre mot de passe : ")
     db_name = get_db_n()
     set_user(db_name, username, email, password)
-
-
 def fn_delete_user():
     print("")
-
-
 def fn_read_user(db_name):
     sqliteConnection = None
     try:
@@ -119,3 +111,18 @@ def fn_read_user(db_name):
         if sqliteConnection:
             sqliteConnection.close()
             print("The SQLite connection is closed")
+
+def fn_create_char():
+    print("")
+def fn_delete_char():
+    print("")
+def fn_read_char():
+    print("")
+
+
+def fn_create_campaign():
+    print("")
+def fn_delete_campaign():
+    print("")
+def fn_read_campaign():
+    print("")
