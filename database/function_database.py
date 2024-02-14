@@ -6,8 +6,8 @@ import os
 def get_db_n():
     file_path = os.path.realpath(__file__)
     work_dir = os.path.dirname(file_path)
-    db_nam = f"{work_dir}/database.db"
-    return db_nam
+    db_name = f"{work_dir}/database.db"
+    return db_name
 
 
 # find sql scripts in folders
