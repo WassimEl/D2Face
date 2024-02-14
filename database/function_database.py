@@ -52,15 +52,20 @@ def init_db(db_name, sql_init):
             print("The SQLite connection is closed")
 
 
-def set_user(db_name, username, email, password):
+def inser_set_user(db_name, username, email, password):
     sqliteConnection = None
     try:
         with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
             print(f"Connected to the database {db_name}")
             cursor = sqliteConnection.cursor()
             try:
-                print(f"Commande SQL exécutée : INSERT INTO USER (username, email, password) VALUES ('{username, email, password}');")
-                cursor.execute(f"INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",(username, email, password),)
+                print(
+                    f"Commande SQL exécutée : INSERT INTO USER (username, email, password) VALUES ('{username, email, password}');"
+                )
+                cursor.execute(
+                    f"INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",
+                    (username, email, password),
+                )
                 print("SQLite command executed successfully")
             except sqlite3.Error as error:
                 print(f"Error while executing SQLite script: {error}")
@@ -76,15 +81,18 @@ def set_user(db_name, username, email, password):
             print("The SQLite connection is closed")
 
 
-# pas beau !!
 def fn_create_user():
     username = input("Entrez votre nom d'utilisateur : ")
     email = input("Entrez votre adresse mail : ")
     password = input("Entrez votre mot de passe : ")
     db_name = get_db_n()
-    set_user(db_name, username, email, password)
+    inser_set_user(db_name, username, email, password)
+
+
 def fn_delete_user():
     print("")
+
+
 def fn_read_user(db_name):
     sqliteConnection = None
     try:
@@ -112,17 +120,152 @@ def fn_read_user(db_name):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 def fn_create_char():
     print("")
+
+
 def fn_delete_char():
     print("")
+
+
 def fn_read_char():
     print("")
 
 
 def fn_create_campaign():
     print("")
+
+
 def fn_delete_campaign():
     print("")
+
+
 def fn_read_campaign():
     print("")
+
+
+def init_menu_character():
+    print("Menu Personnage(s)")
+    q_choix_1 = "[1] Créer une fiche de personnage"
+    q_choix_2 = "[2] Supprimer une fiche de personnage"
+    q_choix_3 = "[3] Afficher la liste des fiches de personnage"
+    q_choix_4 = "[4] Quitter"
+    list_menu = [q_choix_1, q_choix_2, q_choix_3, q_choix_4]
+    return list_menu
+
+
+def menu_character(list_menu):
+    for item in list_menu:
+        print(f"{item}")
+    q_status = "Entrer votre choix (1-4) : "
+    answer = int(input(q_status))
+    match answer:
+        case 1:
+            boucle = True
+            while boucle:
+                boucle = fn_create_char()
+            return True
+        case 2:
+            boucle = True
+            while boucle:
+                boucle = fn_delete_char()
+            return True
+        case 3:
+            db_name = get_db_n()
+            fn_read_char(db_name)
+            return True
+        case 4:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
+
+
+def init_menu_user():
+    print("Menu Utilisateur")
+    choix_1 = "[1] Créer un compte"
+    choix_2 = "[2] Supprimer un compte"
+    choix_3 = "[3] Afficher les informations de mon compte"
+    choix_4 = "[4] Quitter"
+    list_menu = [choix_1, choix_2, choix_3, choix_4]
+    return list_menu
+
+
+def menu_user():
+    try:
+        list_menu = init_menu_user()
+        set_user = set_menu_user(list_menu)
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        return set_user
+
+
+def set_menu_user(menu_user):
+    for item in menu_user:
+        print(f"{item}")
+    q_status = "Entrer votre choix (1-4) : "
+    answer = int(input(q_status))
+
+    match answer:
+        case 1:
+            boucle = True
+            while boucle:
+                boucle = fn_create_user()
+            return True
+        case 2:
+            boucle = True
+            while boucle:
+                boucle = fn_delete_user()
+            return True
+        case 3:
+            db_name = get_db_n()
+            fn_read_user(db_name)
+            return True
+        case 4:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
+
+
+def init_menu_campaign():
+    print("Menu Campagne")
+    q_choix_1 = "[1] Créer une nouvelle campagne"
+    q_choix_2 = "[2] Supprimer une campagne"
+    q_choix_3 = "[3] Afficher les campagnes"
+    q_choix_4 = "[4] Quitter"
+    list_menu = [q_choix_1, q_choix_2, q_choix_3, q_choix_4]
+    return list_menu
+
+
+def menu_campaign(list_menu):
+    for item in list_menu:
+        print(f"{item}")
+    q_status = "Entrer votre choix (1-4) : "
+    answer = int(input(q_status))
+
+    match answer:
+        case 1:
+            boucle = True
+            while boucle:
+                boucle = fn_create_campaign()
+            return True
+        case 2:
+            boucle = True
+            while boucle:
+                boucle = fn_delete_campaign()
+            return True
+        case 3:
+            db_name = get_db_n()
+            fn_read_campaign(db_name)
+            return True
+        case 4:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
