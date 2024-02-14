@@ -50,7 +50,7 @@ CREATE TABLE
         email TEXT,
         password TEXT,
         type_of_user TEXT,
-        characterID INT,
+        characterID INTEGER,
         FOREIGN KEY (characterID) REFERENCES characters (characterID)
     );
 
@@ -59,8 +59,8 @@ CREATE TABLE
         campaignID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         campaign_name TEXT,
         c_creation_time DATETIME,
-        userID INT,
-        station_id INT,
+        userID INTEGER,
+        station_id INTEGER,
         FOREIGN KEY (userID) REFERENCES user (userID),
         FOREIGN KEY (station_id) REFERENCES station (station_id)
     );
@@ -69,8 +69,8 @@ CREATE TABLE
     INSCRIPTION (
         inscriptionID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         i_creation_time DATETIME,
-        userID INT,
-        campaignID INT,
+        userID INTEGER,
+        campaignID INTEGER,
         FOREIGN KEY (userID) REFERENCES user (userID),
         FOREIGN KEY (campaignID) REFERENCES campaign (campaignID)
     );
