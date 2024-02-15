@@ -261,6 +261,7 @@ def fn_create_character():
     align = input("Entrez l'alignement du personnage : ")
     race = input("Entrez la race du personnage : ")
     xp = input("Entrez les points d'expérience du personnage : ")
+<<<<<<< HEAD
     strength = input("Entrez les points de force du personnage : ")
     dexterity = input("Entrez les points de dextérité du personnage : ")
     constitution = input("Entrez les points de constitution du personnage : ")
@@ -293,6 +294,40 @@ def fn_create_character():
     links = input("Entrez les liens du personnage : ")
     defaults = input("Entrez les défauts du personnage : ")
     sorts = input("Entrez les attaques et sorts du personnage : ")
+=======
+    strength = input("Entrez la force du personnage : ")
+    dexterity = input("Entrez la dextérité du personnage : ")
+    constitution = input("Entrez la constitution du personnage : ")
+    intelligence = input("Entrez l'intelligence du personnage : ")
+    wisdom = input("Entrez la sagesse du personnage : ")
+    charisma = input("Entrez le charisme du personnage : ")
+    acrobatics = input("Entrez l'acrobatie du personnage : ")
+    arcana = input("Entrez l'arcane du personnage : ")
+    athletics = input("Entrez l'athlétisme du personnage : ")
+    stealth = input("Entrez la discrétion du personnage : ")
+    animal_handling = input("Entrez la manipulation des animaux du personnage : ")
+    sleight_of_hand = input("Entrez la prestidigitation du personnage : ")
+    history = input("Entrez l'histoire du personnage : ")
+    intimidation = input("Entrez l'intimidation du personnage : ")
+    investigation = input("Entrez l'investigation du personnage : ")
+    medicine = input("Entrez la médecine du personnage : ")
+    nature = input("Entrez la nature du personnage : ")
+    perception = input("Entrez la perception du personnage : ")
+    insight = input("Entrez l'acuité du personnage : ")
+    persuasion = input("Entrez la persuasion du personnage : ")
+    religion = input("Entrez la religion du personnage : ")
+    performance = input("Entrez la performance du personnage : ")
+    survival = input("Entrez la survie du personnage : ")
+    deception = input("Entrez la tromperie du personnage : ")
+    initiative = input("Entrez l'initiative du personnage : ")
+    character_hp = input("Entrez les points de vie du personnage : ")
+    death_counter = input("Entrez le compteur de morts du personnage : ")
+    traits = input("Entrez les traits du personnage : ")
+    ideal = input("Entrez l'idéal du personnage : ")
+    links = input("Entrez les liens du personnage : ")
+    defaults = input("Entrez les défauts du personnage : ")
+    sorts = input("Entrez les sorts du personnage : ")
+>>>>>>> 939aa041f832c94797e4c2544778eec6cca01b74
     equipments = input("Entrez l'équipement du personnage : ")
     capacity = input("Entrez la capacité du personnage : ")
     db_name = get_db_n()
@@ -570,4 +605,8 @@ def menu_user():
     except Exception as error:
         print(f"{error}")
     finally:
+<<<<<<< HEAD
         return set_user
+=======
+        return set_user
+>>>>>>> 939aa041f832c94797e4c2544778eec6cca01b74
