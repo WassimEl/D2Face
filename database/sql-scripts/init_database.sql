@@ -2,7 +2,7 @@ CREATE TABLE
     CHARACTERS (
         characterID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         character_name TEXT,
-        character_classe TEXT,
+        character_class TEXT,
         character_level INTEGER,
         align TEXT,
         race TEXT,
