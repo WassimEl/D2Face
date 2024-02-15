@@ -15,7 +15,11 @@ def menu_main(list_menu):
     for item in list_menu:
         print(f"{item}")
     q_status = "Entrer le choix (1-4) : "
-    answer = int(input(q_status))
+    answer = input(q_status)
+    if answer.isnumeric():
+        answer = int(answer)
+    else:
+        answer = False
 
     match answer:
         case 1:
