@@ -123,7 +123,9 @@ def fn_read_char(db_name):
             print(f"Connected to the database {db_name}")
             cursor = sqliteConnection.cursor()
             try:
-                cursor.execute(f"SELECT * FROM CHARACTERS;")
+                cursor.execute(
+                    f"SELECT character_name, character_class, character_level, race FROM CHARACTERS;"
+                )
                 data = cursor.fetchall()
                 print("SQLite script executed successfully")
                 print(f"\nExecution du SELECT :")
@@ -261,13 +263,12 @@ def fn_create_character():
     align = input("Entrez l'alignement du personnage : ")
     race = input("Entrez la race du personnage : ")
     xp = input("Entrez les points d'expérience du personnage : ")
-<<<<<<< HEAD
     strength = input("Entrez les points de force du personnage : ")
     dexterity = input("Entrez les points de dextérité du personnage : ")
     constitution = input("Entrez les points de constitution du personnage : ")
     intelligence = input("Entrez les points d'intelligence du personnage : ")
     wisdom = input("Entrez les points de sagesse du personnage : ")
-    charisma = input("Entrez les points decharisme du personnage : ")
+    charisma = input("Entrez les points de charisme du personnage : ")
     acrobatics = input("Entrez les points d'acrobatie du personnage : ")
     arcana = input("Entrez les points d'arcane du personnage : ")
     athletics = input("Entrez les points d'athlétisme du personnage : ")
@@ -294,40 +295,6 @@ def fn_create_character():
     links = input("Entrez les liens du personnage : ")
     defaults = input("Entrez les défauts du personnage : ")
     sorts = input("Entrez les attaques et sorts du personnage : ")
-=======
-    strength = input("Entrez la force du personnage : ")
-    dexterity = input("Entrez la dextérité du personnage : ")
-    constitution = input("Entrez la constitution du personnage : ")
-    intelligence = input("Entrez l'intelligence du personnage : ")
-    wisdom = input("Entrez la sagesse du personnage : ")
-    charisma = input("Entrez le charisme du personnage : ")
-    acrobatics = input("Entrez l'acrobatie du personnage : ")
-    arcana = input("Entrez l'arcane du personnage : ")
-    athletics = input("Entrez l'athlétisme du personnage : ")
-    stealth = input("Entrez la discrétion du personnage : ")
-    animal_handling = input("Entrez la manipulation des animaux du personnage : ")
-    sleight_of_hand = input("Entrez la prestidigitation du personnage : ")
-    history = input("Entrez l'histoire du personnage : ")
-    intimidation = input("Entrez l'intimidation du personnage : ")
-    investigation = input("Entrez l'investigation du personnage : ")
-    medicine = input("Entrez la médecine du personnage : ")
-    nature = input("Entrez la nature du personnage : ")
-    perception = input("Entrez la perception du personnage : ")
-    insight = input("Entrez l'acuité du personnage : ")
-    persuasion = input("Entrez la persuasion du personnage : ")
-    religion = input("Entrez la religion du personnage : ")
-    performance = input("Entrez la performance du personnage : ")
-    survival = input("Entrez la survie du personnage : ")
-    deception = input("Entrez la tromperie du personnage : ")
-    initiative = input("Entrez l'initiative du personnage : ")
-    character_hp = input("Entrez les points de vie du personnage : ")
-    death_counter = input("Entrez le compteur de morts du personnage : ")
-    traits = input("Entrez les traits du personnage : ")
-    ideal = input("Entrez l'idéal du personnage : ")
-    links = input("Entrez les liens du personnage : ")
-    defaults = input("Entrez les défauts du personnage : ")
-    sorts = input("Entrez les sorts du personnage : ")
->>>>>>> 939aa041f832c94797e4c2544778eec6cca01b74
     equipments = input("Entrez l'équipement du personnage : ")
     capacity = input("Entrez la capacité du personnage : ")
     db_name = get_db_n()
@@ -498,7 +465,7 @@ def fn_read_user(db_name):
             print(f"Connected to the database {db_name}")
             cursor = sqliteConnection.cursor()
             try:
-                cursor.execute(f"SELECT * FROM USER;")
+                cursor.execute(f"SELECT username, email, password FROM USER;")
                 data = cursor.fetchall()
                 print("SQLite script executed successfully")
                 print(f"\nExecution du SELECT :")
@@ -517,6 +484,85 @@ def fn_read_user(db_name):
         if sqliteConnection:
             sqliteConnection.close()
             print("The SQLite connection is closed")
+
+
+# selectionner un user
+def init_user_menu_character():
+    print(f"\n----Menu Personnage d'utilisateur----")
+    q_choix_1 = "[1] Afficher les personnage de l'utilisateur"
+    q_choix_2 = "[1] Afficher les personnage de l'utilisateur"
+    q_choix_3 = "[2] Quitter"
+    list_menu = [q_choix_1, q_choix_2, q_choix_3]
+    return list_menu
+
+
+def set_user_menu_character(list_menu):
+    for item in list_menu:
+        print(f"{item}")
+    q_status = "Entrer le choix : "
+    status = int(input(q_status))
+    match status:
+        case 1:
+            db_name = get_db_n()
+            fn_read_user(db_name)
+            q_id_status = "Entrer le choix : "
+            user_id = input(q_id_status)
+            fn_menu_user_character(db_name, user_id)
+        case 3:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
+
+
+def fn_menu_user_character():
+    try:
+        list_menu = init_user_menu_character()
+        select_db_out = set_user_menu_character(list_menu)
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        return select_db_out
+
+
+def init_user_menu_select():
+    print(f"\n----Menu Selecion Utilisateur----")
+    q_choix_1 = "[1] Selectionner un utilisateur "
+    q_choix_2 = "[2] Quitter"
+    list_menu = [q_choix_1, q_choix_2]
+    return list_menu
+
+
+def set_user_menu(list_menu):
+    for item in list_menu:
+        print(f"{item}")
+    q_status = "Entrer le choix : "
+    status = int(input(q_status))
+    match status:
+        case 1:
+            db_name = get_db_n()
+            fn_read_user(db_name)
+            q_id_status = "Entrer le choix : "
+            user_id = input(q_id_status)
+            fn_menu_user_character(db_name, user_id)
+            return True
+        case 2:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
+
+
+def fn_menu_user_select():
+    try:
+        list_menu = init_user_menu_select()
+        user_menu_db_out = set_user_menu(list_menu)
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        return user_menu_db_out
 
 
 # USER CREATE
@@ -562,7 +608,8 @@ def init_menu_user():
     choix_1 = "[1] Créer un utilisateur"
     choix_2 = "[2] Supprimer un utilisateur"
     choix_3 = "[3] Afficher les utilisateurs"
-    choix_4 = "[4] Quitter"
+    choix_4 = "[4] Afficher les personnage d'un utilisateur"
+    choix_4 = "[5] Quitter"
     list_menu = [choix_1, choix_2, choix_3, choix_4]
     return list_menu
 
@@ -590,6 +637,11 @@ def set_menu_user(menu_user):
             fn_read_user(db_name)
             return True
         case 4:
+            boucle = True
+            while boucle:
+                boucle = fn_menu_user_select()
+            return True
+        case 5:
             print(f"Fermeture de l'application")
             return False
         case _:
@@ -605,8 +657,4 @@ def menu_user():
     except Exception as error:
         print(f"{error}")
     finally:
-<<<<<<< HEAD
         return set_user
-=======
-        return set_user
->>>>>>> 939aa041f832c94797e4c2544778eec6cca01b74
