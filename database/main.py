@@ -4,8 +4,8 @@ import function_database
 def init_menu_main():
     print("\n----Menu Principal----")
     q_choix_1 = "[1] Utilisateur"
-    q_choix_2 = "[3] Campagne"
-    q_choix_3 = "[4] Quitter"
+    q_choix_2 = "[2] Campagne"
+    q_choix_3 = "[3] Quitter"
     list_menu = [q_choix_1, q_choix_2, q_choix_3]
     return list_menu
 

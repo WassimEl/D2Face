@@ -145,6 +145,7 @@ def fn_read_char(db_name):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 # USER DELETE
 def delete_user(db_name, user_id):
     sqliteConnection = None
@@ -239,7 +240,7 @@ def fn_read_user(db_name):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
-
+#execute display character of user
 def fn_read_user_character(db_name, user_id):
     sqliteConnection = None
     try:
@@ -247,11 +248,15 @@ def fn_read_user_character(db_name, user_id):
             print(f"Connected to the database {db_name}")
             cursor = sqliteConnection.cursor()
             try:
-                cursor.execute(f"SELECT characterID FROM USER WHERE userID = {user_id} ;")
+                cursor.execute(
+                    f"SELECT characterID FROM USER WHERE userID = {user_id} ;"
+                )
                 data = cursor.fetchall()
 
                 charId = data[0][0]
-                cursor.execute(f"SELECT character_name, character_class FROM CHARACTERS WHERE characterID = {charId}")
+                cursor.execute(
+                    f"SELECT character_name, character_class FROM CHARACTERS WHERE characterID = {charId}"
+                )
                 data = cursor.fetchall()
                 print("SQLite script executed successfully")
                 print(f"\nExecution du SELECT :")
@@ -272,7 +277,7 @@ def fn_read_user_character(db_name, user_id):
             print("The SQLite connection is closed")
 
 
-# selectionner un user
+# menu of select user -- chose option
 def init_user_menu_character():
     print(f"\n----Menu Personnage d'utilisateur----")
     q_choix_1 = "[1] Afficher les personnages de l'utilisateur"
@@ -312,6 +317,7 @@ def fn_menu_user_character(user_id):
         return select_db_out
 
 
+# form of user select menu
 def init_user_menu_select():
     print(f"\n----Menu Selection Utilisateur----")
     q_choix_1 = "[1] Selectionner un utilisateur"
@@ -320,6 +326,7 @@ def init_user_menu_select():
     return list_menu
 
 
+# input menu select user
 def set_user_menu(list_menu):
     for item in list_menu:
         print(f"{item}")
@@ -341,6 +348,7 @@ def set_user_menu(list_menu):
             return True
 
 
+# Check for error and init menu of user select
 def fn_menu_user_select():
     try:
         list_menu = init_user_menu_select()
@@ -351,7 +359,7 @@ def fn_menu_user_select():
         return user_menu_db_out
 
 
-# USER CREATE
+# executeSQL create user
 def insert_set_user(db_name, username, email, password):
     sqliteConnection = None
     try:
@@ -378,7 +386,7 @@ def insert_set_user(db_name, username, email, password):
             print("The SQLite connection is closed")
 
 
-# USER CREATE
+# form of create user
 def fn_create_user():
     print(f"\n----Encoder un utilisateur----")
     username = input("Entrer le nom d'utilisateur : ")
@@ -388,7 +396,7 @@ def fn_create_user():
     insert_set_user(db_name, username, email, password)
 
 
-# USER MENU
+# form of menu
 def init_menu_user():
     print("\n----Menu Utilisateur----")
     choix_1 = "[1] Créer un utilisateur"
@@ -400,7 +408,7 @@ def init_menu_user():
     return list_menu
 
 
-# USER MENU
+# input and display menu user
 def set_menu_user(menu_user):
     for item in menu_user:
         print(f"{item}")
@@ -435,7 +443,7 @@ def set_menu_user(menu_user):
             return True
 
 
-# USER MENU
+# Check for error and init menu of user
 def menu_user():
     try:
         list_menu = init_menu_user()
