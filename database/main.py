@@ -4,10 +4,9 @@ import function_database
 def init_menu_main():
     print("\n----Menu Principal----")
     q_choix_1 = "[1] Utilisateur"
-    q_choix_2 = "[2] Fiche de personnage"
-    q_choix_3 = "[3] Campagne"
-    q_choix_4 = "[4] Quitter"
-    list_menu = [q_choix_1, q_choix_2, q_choix_3, q_choix_4]
+    q_choix_2 = "[3] Campagne"
+    q_choix_3 = "[4] Quitter"
+    list_menu = [q_choix_1, q_choix_2, q_choix_3]
     return list_menu
 
 
@@ -26,14 +25,9 @@ def menu_main(list_menu):
         case 2:
             boucle = True
             while boucle:
-                boucle = function_database.menu_character()
-            return True
-        case 3:
-            boucle = True
-            while boucle:
                 boucle = function_database.menu_campaign()
             return True
-        case 4:
+        case 3:
             print(f"Fermeture de l'application")
             return False
         case _:
