@@ -93,8 +93,8 @@ def insert_set_character(
     defaults,
     sorts,
     equipments,
-    capacity,
-):
+    capacity
+):                 
     sqliteConnection = None
     try:
         with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
