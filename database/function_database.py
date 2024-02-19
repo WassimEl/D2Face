@@ -52,6 +52,203 @@ def init_db(db_name, sql_init):
             print("The SQLite connection is closed")
 
 
+def insert_set_character(
+    db_name,
+    character_name,
+    character_class,
+    character_level,
+    align,
+    race,
+    xp,
+    strength,
+    dexterity,
+    constitution,
+    intelligence,
+    wisdom,
+    charisma,
+    acrobatics,
+    arcana,
+    athletics,
+    stealth,
+    animal_handling,
+    sleight_of_hand,
+    history,
+    intimidation,
+    investigation,
+    medicine,
+    nature,
+    perception,
+    insight,
+    persuasion,
+    religion,
+    performance,
+    survival,
+    deception,
+    initiative,
+    character_hp,
+    death_counter,
+    traits,
+    ideal,
+    links,
+    defaults,
+    sorts,
+    equipments,
+    capacity,
+):
+    sqliteConnection = None
+    try:
+        with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
+            print(f"Connected to the database {db_name}")
+            cursor = sqliteConnection.cursor()
+            try:
+                cursor.execute(
+                    f"INSERT INTO CHARACTERS (character_name, character_class, character_level, align, race, xp, strength,dexterity, constitution, intelligence, wisdom, charisma, acrobatics, arcana,athletics, stealth, animal_handling, sleight_of_hand, history, intimidation,investigation, medicine, nature, perception, insight, persuasion, religion,performance, survival, deception, initiative, character_hp, death_counter,traits, ideal, links, defaults, sorts, equipments, capacity) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        character_name,
+                        character_class,
+                        character_level,
+                        align,
+                        race,
+                        xp,
+                        strength,
+                        dexterity,
+                        constitution,
+                        intelligence,
+                        wisdom,
+                        charisma,
+                        acrobatics,
+                        arcana,
+                        athletics,
+                        stealth,
+                        animal_handling,
+                        sleight_of_hand,
+                        history,
+                        intimidation,
+                        investigation,
+                        medicine,
+                        nature,
+                        perception,
+                        insight,
+                        persuasion,
+                        religion,
+                        performance,
+                        survival,
+                        deception,
+                        initiative,
+                        character_hp,
+                        death_counter,
+                        traits,
+                        ideal,
+                        links,
+                        defaults,
+                        sorts,
+                        equipments,
+                        capacity,
+                    ),
+                )
+                print("SQLite command executed successfully")
+            except sqlite3.Error as error:
+                print(f"Error while executing SQLite script: {error}")
+            finally:
+                cursor.close()
+    except sqlite3.Error as error:
+        print(f"Error while connecting to SQLite: {error}")
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        if sqliteConnection:
+            sqliteConnection.close()
+            print("The SQLite connection is closed")
+
+
+def fn_create_character():
+    print(f"\n----Encoder un personnage----")
+    character_name = input("Entrez le nom du personnage : ")
+    character_class = input("Entrez la classe du personnage : ")
+    character_level = input("Entrez le niveau du personnage : ")
+    align = input("Entrez l'alignement du personnage : ")
+    race = input("Entrez la race du personnage : ")
+    xp = input("Entrez les points d'expérience du personnage : ")
+    strength = input("Entrez les points de force du personnage : ")
+    dexterity = input("Entrez les points de dextérité du personnage : ")
+    constitution = input("Entrez les points de constitution du personnage : ")
+    intelligence = input("Entrez les points d'intelligence du personnage : ")
+    wisdom = input("Entrez les points de sagesse du personnage : ")
+    charisma = input("Entrez les points de charisme du personnage : ")
+    acrobatics = input("Entrez les points d'acrobatie du personnage : ")
+    arcana = input("Entrez les points d'arcane du personnage : ")
+    athletics = input("Entrez les points d'athlétisme du personnage : ")
+    stealth = input("Entrez les points de discrétion du personnage : ")
+    animal_handling = input("Entrez les points de dressage du personnage : ")
+    sleight_of_hand = input("Entrez les points d'escamotage du personnage : ")
+    history = input("Entrez les points d'histoire du personnage : ")
+    intimidation = input("Entrez les points d'intimidation du personnage : ")
+    investigation = input("Entrez les points d'investigation du personnage : ")
+    medicine = input("Entrez les points de médecine du personnage : ")
+    nature = input("Entrez les points de nature du personnage : ")
+    perception = input("Entrez les points de perception du personnage : ")
+    insight = input("Entrez les points d'acuité du personnage : ")
+    persuasion = input("Entrez les points de persuasion du personnage : ")
+    religion = input("Entrez les points de religion du personnage : ")
+    performance = input("Entrez les points de performance du personnage : ")
+    survival = input("Entrez les points survie du personnage : ")
+    deception = input("Entrez les points tromperie du personnage : ")
+    initiative = input("Entrez les points d'initiative du personnage : ")
+    character_hp = input("Entrez les points de vie du personnage : ")
+    death_counter = input("Entrez le nombre jet contre-mort du personnage : ")
+    traits = input("Entrez les traits du personnage : ")
+    ideal = input("Entrez les ideaux du personnage : ")
+    links = input("Entrez les liens du personnage : ")
+    defaults = input("Entrez les défauts du personnage : ")
+    sorts = input("Entrez les attaques et sorts du personnage : ")
+    equipments = input("Entrez l'équipement du personnage : ")
+    capacity = input("Entrez la capacité du personnage : ")
+    db_name = get_db_n()
+    insert_set_character(
+        db_name,
+        character_name,
+        character_class,
+        character_level,
+        align,
+        race,
+        xp,
+        strength,
+        dexterity,
+        constitution,
+        intelligence,
+        wisdom,
+        charisma,
+        acrobatics,
+        arcana,
+        athletics,
+        stealth,
+        animal_handling,
+        sleight_of_hand,
+        history,
+        intimidation,
+        investigation,
+        medicine,
+        nature,
+        perception,
+        insight,
+        persuasion,
+        religion,
+        performance,
+        survival,
+        deception,
+        initiative,
+        character_hp,
+        death_counter,
+        traits,
+        ideal,
+        links,
+        defaults,
+        sorts,
+        equipments,
+        capacity,
+    )
+
+    
 def delete_char(db_name, characterID):
     sqliteConnection = None
     try:
@@ -298,7 +495,8 @@ def set_user_menu_character(list_menu, user_id):
             db_name = get_db_n()
             fn_read_user_character(db_name, user_id)
         case 2:
-            pass
+            db_name = get_db_n()
+            fn_create_character(db_name, user_id)
         case 3:
             print(f"Fermeture de l'application")
             return False
