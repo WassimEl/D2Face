@@ -1,4 +1,13 @@
-CREATE TABLE
+CREATE TABLE IF NOT EXISTS
+    USER (
+        userID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+        username TEXT,
+        email TEXT,
+        password TEXT,
+        type_of_user TEXT
+    );
+
+CREATE TABLE IF NOT EXISTS
     CHARACTERS (
         characterID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         character_name TEXT,
@@ -40,37 +49,28 @@ CREATE TABLE
         defaults TEXT,
         sorts TEXT,
         equipments TEXT,
-        capacity TEXT
+        capacity TEXT,
+        userID INTEGER,
+        FOREIGN KEY (userID) REFERENCES user(userID)
     );
 
-CREATE TABLE
-    USER (
-        userID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-        username TEXT,
-        email TEXT,
-        password TEXT,
-        type_of_user TEXT,
-        characterID INTEGER,
-        FOREIGN KEY (characterID) REFERENCES characters (characterID)
-    );
-
-CREATE TABLE
+CREATE TABLE IF NOT EXISTS
     CAMPAIGN (
         campaignID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         campaign_name TEXT,
         c_creation_time DATETIME,
         userID INTEGER,
         station_id INTEGER,
-        FOREIGN KEY (userID) REFERENCES user (userID),
-        FOREIGN KEY (station_id) REFERENCES station (station_id)
+        FOREIGN KEY (userID) REFERENCES user(userID),
+        FOREIGN KEY (station_id) REFERENCES station(station_id)
     );
 
-CREATE TABLE
+CREATE TABLE IF NOT EXISTS
     INSCRIPTION (
         inscriptionID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         i_creation_time DATETIME,
         userID INTEGER,
         campaignID INTEGER,
-        FOREIGN KEY (userID) REFERENCES user (userID),
-        FOREIGN KEY (campaignID) REFERENCES campaign (campaignID)
+        FOREIGN KEY (userID) REFERENCES user(userID),
+        FOREIGN KEY (campaignID) REFERENCES campaign(campaignID)
     );

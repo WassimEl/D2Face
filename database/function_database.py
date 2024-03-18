@@ -54,6 +54,7 @@ def init_db(db_name, sql_init):
 
 def insert_set_character(
     db_name,
+    user_id,
     character_name,
     character_class,
     character_level,
@@ -94,7 +95,7 @@ def insert_set_character(
     sorts,
     equipments,
     capacity
-):                 
+):
     sqliteConnection = None
     try:
         with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
@@ -102,7 +103,7 @@ def insert_set_character(
             cursor = sqliteConnection.cursor()
             try:
                 cursor.execute(
-                    f"INSERT INTO CHARACTERS (character_name, character_class, character_level, align, race, xp, strength,dexterity, constitution, intelligence, wisdom, charisma, acrobatics, arcana,athletics, stealth, animal_handling, sleight_of_hand, history, intimidation,investigation, medicine, nature, perception, insight, persuasion, religion,performance, survival, deception, initiative, character_hp, death_counter,traits, ideal, links, defaults, sorts, equipments, capacity) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    f"INSERT INTO CHARACTERS (character_name, character_class, character_level, align, race, xp, strength, dexterity, constitution, intelligence, wisdom, charisma, acrobatics, arcana, athletics, stealth, animal_handling, sleight_of_hand, history, intimidation, investigation, medicine, nature, perception, insight, persuasion, religion, performance, survival, deception, initiative, character_hp, death_counter, traits, ideal, links, defaults, sorts, equipments, capacity, userID) VALUES",
                     (
                         character_name,
                         character_class,
@@ -144,6 +145,7 @@ def insert_set_character(
                         sorts,
                         equipments,
                         capacity,
+                        user_id
                     ),
                 )
                 print("SQLite command executed successfully")
@@ -161,7 +163,7 @@ def insert_set_character(
             print("The SQLite connection is closed")
 
 
-def fn_create_character():
+def fn_create_character(db_name, user_id):
     print(f"\n----Encoder un personnage----")
     character_name = input("Entrez le nom du personnage : ")
     character_class = input("Entrez la classe du personnage : ")
@@ -206,6 +208,7 @@ def fn_create_character():
     db_name = get_db_n()
     insert_set_character(
         db_name,
+        user_id,
         character_name,
         character_class,
         character_level,
@@ -245,7 +248,7 @@ def fn_create_character():
         defaults,
         sorts,
         equipments,
-        capacity,
+        capacity
     )
 
     

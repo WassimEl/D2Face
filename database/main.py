@@ -51,3 +51,5 @@ def fn_app():
 if __name__ == "__main__":
     init_db()
     fn_app()
+
+        
