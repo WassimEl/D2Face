@@ -103,50 +103,8 @@ def insert_set_character(
             cursor = sqliteConnection.cursor()
             try:
                 cursor.execute(
-                    f"INSERT INTO CHARACTERS (character_name, character_class, character_level, align, race, xp, strength, dexterity, constitution, intelligence, wisdom, charisma, acrobatics, arcana, athletics, stealth, animal_handling, sleight_of_hand, history, intimidation, investigation, medicine, nature, perception, insight, persuasion, religion, performance, survival, deception, initiative, character_hp, death_counter, traits, ideal, links, defaults, sorts, equipments, capacity, userID) VALUES",
-                    (
-                        character_name,
-                        character_class,
-                        character_level,
-                        align,
-                        race,
-                        xp,
-                        strength,
-                        dexterity,
-                        constitution,
-                        intelligence,
-                        wisdom,
-                        charisma,
-                        acrobatics,
-                        arcana,
-                        athletics,
-                        stealth,
-                        animal_handling,
-                        sleight_of_hand,
-                        history,
-                        intimidation,
-                        investigation,
-                        medicine,
-                        nature,
-                        perception,
-                        insight,
-                        persuasion,
-                        religion,
-                        performance,
-                        survival,
-                        deception,
-                        initiative,
-                        character_hp,
-                        death_counter,
-                        traits,
-                        ideal,
-                        links,
-                        defaults,
-                        sorts,
-                        equipments,
-                        capacity,
-                        user_id
-                    ),
+                    f"INSERT INTO CHARACTERS (character_name, character_class, character_level, align, race, xp, strength, dexterity, constitution, intelligence, wisdom, charisma, acrobatics, arcana, athletics, stealth, animal_handling, sleight_of_hand, history, intimidation, investigation, medicine, nature, perception, insight, persuasion, religion, performance, survival, deception, initiative, character_hp, death_counter, traits, ideal, links, defaults, sorts, equipments, capacity, userID) "
+                    f"VALUES('{character_name}','{character_class}',{character_level},'{align}',{race},{xp},{strength},{dexterity},{constitution},{intelligence},{wisdom},{charisma},{acrobatics},{arcana},{athletics},{stealth},{animal_handling},{sleight_of_hand},{history},{intimidation},{investigation},{medicine},{nature},{perception},{insight},{persuasion},{religion},{performance},{survival},{deception},{initiative},{character_hp},{death_counter},'{traits}','{ideal}','{links}','{defaults}','{sorts}','{equipments}','{capacity}',{user_id})"
                 )
                 print("SQLite command executed successfully")
             except sqlite3.Error as error:
@@ -205,7 +163,7 @@ def fn_create_character(db_name, user_id):
     sorts = input("Entrez les attaques et sorts du personnage : ")
     equipments = input("Entrez l'équipement du personnage : ")
     capacity = input("Entrez la capacité du personnage : ")
-    db_name = get_db_n()
+    # db_name = get_db_n()
     insert_set_character(
         db_name,
         user_id,
