@@ -52,10 +52,10 @@ def init_db(db_name, sql_init):
             print("The SQLite connection is closed")
 
 
-
-#============================================================#
+# ============================================================#
 #                    DELETE CHARACTERS                       #
-#============================================================#
+# ============================================================#
+
 
 # EXECUTE SQL AFFICHER CHARACTERS
 def fn_read_char(db_name):
@@ -87,6 +87,7 @@ def fn_read_char(db_name):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 # EXECUTE SQL SUPPRIMER CHARACTER
 def delete_char(db_name, characterID):
     sqliteConnection = None
@@ -112,6 +113,7 @@ def delete_char(db_name, characterID):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 # INIT MENU SUPPRIMER CHARACTER
 def init_delete_char_menu():
     print(f"\n----Menu Supression----")
@@ -119,6 +121,7 @@ def init_delete_char_menu():
     q_choix_2 = "[2] Quitter"
     list_menu = [q_choix_1, q_choix_2]
     return list_menu
+
 
 # CHOIX MENU SUPPRIMER CHARACTER
 def delete_char_menu(list_menu):
@@ -141,6 +144,7 @@ def delete_char_menu(list_menu):
             print(f"\nErreur : Choix non-valide\n")
             return True
 
+
 # SUPPRIMER CHARACTER
 def fn_delete_character():
     try:
@@ -152,12 +156,12 @@ def fn_delete_character():
         return delete_db_out
 
 
+# ============================================================#
+#                      DELETE USER                            #
+# ============================================================#
 
-#============================================================#
-#                      DELETE USER                           #
-#============================================================#
-            
-# EXECUTE SQL SUPPRIMER USER 
+
+# EXECUTE SQL SUPPRIMER USER
 def delete_user(db_name, user_id):
     sqliteConnection = None
     try:
@@ -223,14 +227,14 @@ def fn_delete_user():
         return delete_db_out
 
 
-
-#============================================================#
+# ============================================================#
 #                      USER-CHARACTER                        #
-#============================================================#
+# ============================================================#
 
-#============================================================#
+# ============================================================#
 #                      CREATE CHARACTER                      #
-#============================================================#
+# ============================================================#
+
 
 # EXECUTE CREATE CHARACTER FROM USER
 def insert_set_character(
@@ -302,6 +306,7 @@ def insert_set_character(
         if sqliteConnection:
             sqliteConnection.close()
             print("The SQLite connection is closed")
+
 
 # CREATE CHARACTER FROM USER
 def fn_create_character(db_name, user_id):
@@ -391,6 +396,7 @@ def fn_create_character(db_name, user_id):
         capacity,
     )
 
+
 # EXECUTE SQL AFFICHER LES USERS
 def fn_read_user(db_name):
     sqliteConnection = None
@@ -418,6 +424,7 @@ def fn_read_user(db_name):
         if sqliteConnection:
             sqliteConnection.close()
             print("The SQLite connection is closed")
+
 
 # EXECUTE SQL AFFICHER LES CHARACTERS D'UN USER
 def fn_read_user_character(db_name, user_id):
@@ -449,6 +456,7 @@ def fn_read_user_character(db_name, user_id):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 # INIT MENU CHARACTER FROM USER
 def init_user_menu_character():
     print(f"\n----Menu Personnage d'utilisateur----")
@@ -458,6 +466,7 @@ def init_user_menu_character():
     q_choix_4 = "[4] Quitter"
     list_menu = [q_choix_1, q_choix_2, q_choix_3, q_choix_4]
     return list_menu
+
 
 # CHOIX MENU CHARACTER FROM USER
 def set_user_menu_character(list_menu, user_id):
@@ -479,6 +488,7 @@ def set_user_menu_character(list_menu, user_id):
             print(f"\nErreur : Choix non-valide\n")
             return True
 
+
 # OPTION CHARACTER FROM USER
 def fn_menu_user_character(user_id):
     try:
@@ -489,6 +499,7 @@ def fn_menu_user_character(user_id):
     finally:
         return select_db_out
 
+
 # INIT SELECT USER FOR CHARACTER MENU
 def init_user_menu_select():
     print(f"\n----Menu Selection Utilisateur----")
@@ -496,6 +507,7 @@ def init_user_menu_select():
     q_choix_2 = "[2] Quitter"
     list_menu = [q_choix_1, q_choix_2]
     return list_menu
+
 
 # CHOIX MENU SELECT USER FOR CHARACTER MENU
 def set_user_menu(list_menu):
@@ -518,6 +530,7 @@ def set_user_menu(list_menu):
             print(f"\nErreur : Choix non-valide\n")
             return True
 
+
 # MENU SELECT USER FOR CHARACTER MENU
 def fn_menu_user_select():
     try:
@@ -529,9 +542,10 @@ def fn_menu_user_select():
         return user_menu_db_out
 
 
-#============================================================#
+# ============================================================#
 #                       CREATE USER                          #
-#============================================================#
+# ============================================================#
+
 
 # EXECUTE SQL CREATE USER
 def insert_set_user(db_name, username, email, password):
@@ -559,6 +573,7 @@ def insert_set_user(db_name, username, email, password):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
 # INPUT OF 'CREATE USER'
 def fn_create_user():
     print(f"\n----Encoder un utilisateur----")
@@ -569,9 +584,10 @@ def fn_create_user():
     insert_set_user(db_name, username, email, password)
 
 
-#============================================================#
+# ============================================================#
 #                       MENU USER                            #
-#============================================================#
+# ============================================================#
+
 
 # INIT MENU USER
 def init_menu_user():
@@ -583,6 +599,7 @@ def init_menu_user():
     choix_5 = "[5] Quitter"
     list_menu = [choix_1, choix_2, choix_3, choix_4, choix_5]
     return list_menu
+
 
 # CHOIX USER MENU
 def set_menu_user(menu_user):
@@ -618,6 +635,7 @@ def set_menu_user(menu_user):
             print(f"\nErreur : Choix non-valide\n")
             return True
 
+
 # MENU USER
 def menu_user():
     try:
@@ -629,42 +647,9 @@ def menu_user():
         return set_user
 
 
-#============================================================#
-#                     MENU CAMPAIGN                          #
-#============================================================#
-
-
-# EXECUTE SQL CREATE USER
-def insert_set_campaign(db_name, user_id, cpn_name):
-    sqliteConnection = None
-    try:
-        with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
-            print(f"Connected to the database {db_name}")
-            cursor = sqliteConnection.cursor()
-            try:
-                cursor.execute(
-                    f"INSERT INTO CAMPAIGN (campaign_name, userID) VALUES ('{cpn_name}', {user_id})"
-                )
-                print(f"Campaign created for userID : {user_id}")
-            except sqlite3.Error as error:
-                print(
-                    f"Error while executing SQLite script: {error}"
-                )
-            finally:
-                cursor.close()
-    except sqlite3.Error as error:
-        print(f"Error while connecting to SQLite: {error}")
-    except Exception as error:
-        print(f"{error}")
-    finally:
-        if sqliteConnection:
-            sqliteConnection.close()
-            print("The SQLite connection is closed")
-
-def fn_create_campaign(db_name, user_id):
-    print(f"\n----Encoder une campagne----")
-    cpn_name = input("Entrez le nom de la campagne : ")
-    insert_set_campaign(db_name, user_id, cpn_name)
+# ============================================================#
+#                     DELETE CAMPAIGN                        #
+# ============================================================#
 
 # EXECUTE SQL AFFICHER LES CAMPAGNES D'UN USER
 def fn_read_user_campaign(db_name, user_id):
@@ -675,7 +660,7 @@ def fn_read_user_campaign(db_name, user_id):
             cursor = sqliteConnection.cursor()
             try:
                 cursor.execute(
-                    f"SELECT campaign_name FROM CAMPAIGN WHERE userID = {user_id}"
+                    f"SELECT campaignID, campaign_name FROM CAMPAIGN WHERE userID = {user_id}"
                 )
                 data = cursor.fetchall()
                 print("SQLite script executed successfully")
@@ -696,15 +681,119 @@ def fn_read_user_campaign(db_name, user_id):
             sqliteConnection.close()
             print("The SQLite connection is closed")
 
+
+# EXECUTE SQL SUPPRIMER CHARACTER
+def delete_campaign(db_name, campaign_id, user_id):
+    sqliteConnection = None
+    try:
+        with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
+            print(f"Connected to the database {db_name}")
+            cursor = sqliteConnection.cursor()
+            try:
+                cursor.execute(
+                    f"DELETE FROM CAMPAIGN WHERE campaignID = {campaign_id};"
+                )
+                print("SQLite command executed successfully")
+            except sqlite3.Error as error:
+                print(f"Error while executing SQLite command: {error}")
+            finally:
+                cursor.close()
+    except sqlite3.Error as error:
+        print(f"Error while connecting to SQLite: {error}")
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        if sqliteConnection:
+            sqliteConnection.close()
+            print("The SQLite connection is closed")
+
+
+# INIT MENU SUPPRIMER CHARACTER
+def init_delete_campaign_menu():
+    print(f"\n----Menu Supression----")
+    q_choix_1 = "[1] Supprimer une campagne"
+    q_choix_2 = "[2] Quitter"
+    list_menu = [q_choix_1, q_choix_2]
+    return list_menu
+
+
+# CHOIX MENU SUPPRIMER CHARACTER
+def delete_campaign_menu(list_menu, db_name,user_id):
+    for item in list_menu:
+        print(f"{item}")
+    q_status = "Entrer le choix : "
+    status = int(input(q_status))
+    match status:
+        case 1:
+            db_name = get_db_n()
+            fn_read_user_campaign(db_name)
+            q_id_status = "Entrer le choix : "
+            campaign_id = input(q_id_status)
+            delete_campaign(db_name, campaign_id,user_id)
+            return True
+        case 2:
+            print(f"Fermeture de l'application")
+            return False
+        case _:
+            print(f"\nErreur : Choix non-valide\n")
+            return True
+
+# SUPPRIMER CAMPAIGN
+def fn_delete_campaign(db_name, user_id):
+    try:
+        list_menu = init_delete_campaign_menu()
+        delete_db_out = delete_campaign_menu(list_menu,db_name, user_id)
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        return delete_db_out
+
+# ============================================================#
+#                     MENU CAMPAIGN                           #
+# ============================================================#
+
+
+# EXECUTE SQL CREATE USER
+def insert_set_campaign(db_name, user_id, cpn_name):
+    sqliteConnection = None
+    try:
+        with sqlite3.connect(db_name, timeout=10) as sqliteConnection:
+            print(f"Connected to the database {db_name}")
+            cursor = sqliteConnection.cursor()
+            try:
+                cursor.execute(
+                    f"INSERT INTO CAMPAIGN (campaign_name, userID) VALUES ('{cpn_name}', {user_id})"
+                )
+                print(f"Campaign created for userID : {user_id}")
+            except sqlite3.Error as error:
+                print(f"Error while executing SQLite script: {error}")
+            finally:
+                cursor.close()
+    except sqlite3.Error as error:
+        print(f"Error while connecting to SQLite: {error}")
+    except Exception as error:
+        print(f"{error}")
+    finally:
+        if sqliteConnection:
+            sqliteConnection.close()
+            print("The SQLite connection is closed")
+
+
+def fn_create_campaign(db_name, user_id):
+    print(f"\n----Encoder une campagne----")
+    cpn_name = input("Entrez le nom de la campagne : ")
+    insert_set_campaign(db_name, user_id, cpn_name)
+
 # INIT MENU CAMPAIGN
 def init_menu_campaign():
-   print("\n----Menu Campagne----")
-   choix_1 = "[1] Créer une campagne"
-   choix_2 = "[2] Supprimer une campagne"
-   choix_3 = "[3] Afficher le(s) campagne(s)"
-   choix_4 = "[4] Quitter"
-   list_menu = [choix_1, choix_2, choix_3, choix_4]
-   return list_menu
+    print("\n----Menu Campagne----")
+    choix_1 = "[1] Créer une campagne"
+    choix_2 = "[2] Supprimer une campagne"
+    choix_3 = "[3] Afficher le(s) campagne(s)"
+    choix_4 = "[4] Quitter"
+    list_menu = [choix_1, choix_2, choix_3, choix_4]
+    return list_menu
+
 
 # CHOIX MENU CAMPAIGN FROM USER
 def set_user_menu_campaign(list_menu, user_id):
@@ -717,13 +806,15 @@ def set_user_menu_campaign(list_menu, user_id):
             db_name = get_db_n()
             fn_create_campaign(db_name, user_id)
         case 2:
-            print("hello")
+            db_name = get_db_n()
+            fn_delete_campaign(db_name, user_id)
         case 3:
             db_name = get_db_n()
             fn_read_user_campaign(db_name, user_id)
         case _:
             print(f"\nErreur : Choix non-valide\n")
             return True
+
 
 # OPTION CHARACTER FROM USER
 def fn_menu_user_campaign(user_id):
@@ -735,6 +826,7 @@ def fn_menu_user_campaign(user_id):
     finally:
         return select_db_out
 
+
 # INIT SELECT USER FOR CHARACTER MENU
 def init_menu_campaign_select():
     print(f"\n----Menu Selection Utilisateur----")
@@ -742,6 +834,7 @@ def init_menu_campaign_select():
     q_choix_2 = "[2] Quitter"
     list_menu = [q_choix_1, q_choix_2]
     return list_menu
+
 
 # CHOIX MENU SELECT USER FOR CHARACTER MENU
 def set_menu_campaign(list_menu):
@@ -763,6 +856,7 @@ def set_menu_campaign(list_menu):
         case _:
             print(f"\nErreur : Choix non-valide\n")
             return True
+
 
 # MENU SELECT USER FOR CHARACTER MENU
 def menu_campaign():
