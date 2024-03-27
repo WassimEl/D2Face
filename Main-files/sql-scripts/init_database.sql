@@ -60,9 +60,7 @@ CREATE TABLE IF NOT EXISTS
         campaign_name TEXT,
         c_creation_time DATETIME,
         userID INTEGER,
-        station_id INTEGER,
-        FOREIGN KEY (userID) REFERENCES user(userID),
-        FOREIGN KEY (station_id) REFERENCES station(station_id)
+        FOREIGN KEY (userID) REFERENCES user(userID)
     );
 
 CREATE TABLE IF NOT EXISTS
