@@ -1,0 +1,15 @@
+{% extends 'base_block.html' %} {% block content %}
+<h1>{% block title %} Encodez User {% endblock %}</h1>
+<form method="POST" action="{{ url_for('submit') }}">
+  <label for="username">Username :</label>
+  <input type="text" id="username" name="username" required /><br />
+
+  <label for="mail">Email :</label>
+  <input type="email" id="mail" name="mail" required /><br />
+
+  <label for="password">Mot de passe :</label>
+  <input type="password" id="password" name="password" required /><br />
+
+  <button type="submit">Envoyer</button>
+  {% endblock %}
+</form>
